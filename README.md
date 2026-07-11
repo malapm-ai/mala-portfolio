@@ -1,6 +1,6 @@
 # Mala Priyadharsini T – Portfolio
 
-**Product Manager L2 | Business Analyst | Enterprise Product Delivery**
+**Project Manager L2 | Business Analyst | Enterprise Product Delivery**
 
 A professional portfolio showcasing product management, business analysis, and enterprise product delivery expertise across multiple domains.
 
