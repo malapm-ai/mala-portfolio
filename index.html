@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mala Priyadharsini T - Project Manager L2 & Business Analyst</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #1a1a2e;
+            --secondary: #16213e;
+            --accent: #0f3460;
+            --highlight: #e94560;
+            --text: #eaeaea;
+            --text-muted: #b0b0b0;
+            --bg-light: #0f1419;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            background: rgba(26, 26, 46, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(233, 69, 96, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: var(--text);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--highlight);
+        }
+
+        /* Header/Hero */
+        header {
+            max-width: 1200px;
+            margin: 4rem auto 2rem;
+            padding: 0 2rem;
+            text-align: center;
+        }
+
+        header h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #e94560, #00d4ff);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        header p {
+            font-size: 1.3rem;
+            color: var(--text-muted);
+            margin-bottom: 1rem;
+        }
+
+        header .tagline {
+            font-size: 1.1rem;
+            color: var(--highlight);
+            margin-bottom: 2rem;
+        }
+
+        .contact-links {
+            display: flex;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+
+        .contact-links a {
+            color: var(--text);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            border: 1px solid var(--highlight);
+            border-radius: 4px;
+            transition: all 0.3s;
+        }
+
+        .contact-links a:hover {
+            background: var(--highlight);
+            color: white;
+        }
+
+        /* Main content */
+        main {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+        }
+
+        section {
+            background: rgba(22, 33, 62, 0.5);
+            border: 1px solid rgba(233, 69, 96, 0.1);
+            border-radius: 8px;
+            padding: 2.5rem;
+            margin-bottom: 3rem;
+            backdrop-filter: blur(10px);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            color: var(--highlight);
+            border-bottom: 2px solid var(--highlight);
+            padding-bottom: 0.5rem;
+        }
+
+        /* About section */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: start;
+        }
+
+        .about-content h3 {
+            color: var(--highlight);
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .about-content ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .about-content li {
+            padding: 0.5rem 0;
+            color: var(--text-muted);
+        }
+
+        .about-content li:before {
+            content: "→ ";
+            color: var(--highlight);
+            font-weight: bold;
+            margin-right: 0.5rem;
+        }
+
+        /* Case Studies */
+        .case-study {
+            background: rgba(15, 52, 96, 0.3);
+            border-left: 4px solid var(--highlight);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 4px;
+        }
+
+        .case-study h3 {
+            color: var(--highlight);
+            margin-bottom: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .case-study .role {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+
+        .case-study p {
+            margin-bottom: 1rem;
+            color: var(--text-muted);
+        }
+
+        .case-study strong {
+            color: var(--highlight);
+        }
+
+        .read-more {
+            color: var(--highlight);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+            display: inline-block;
+            margin-top: 0.5rem;
+        }
+
+        .read-more:hover {
+            transform: translateX(4px);
+        }
+
+        /* Skills Grid */
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .skill-category {
+            background: rgba(15, 52, 96, 0.3);
+            padding: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid rgba(233, 69, 96, 0.2);
+        }
+
+        .skill-category h3 {
+            color: var(--highlight);
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+
+        .skill-category ul {
+            list-style: none;
+        }
+
+        .skill-category li {
+            padding: 0.4rem 0;
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .skill-category li:before {
+            content: "• ";
+            color: var(--highlight);
+            margin-right: 0.5rem;
+        }
+
+        /* Projects */
+        .project {
+            background: rgba(15, 52, 96, 0.3);
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 6px;
+            border: 1px solid rgba(233, 69, 96, 0.15);
+        }
+
+        .project h3 {
+            color: var(--highlight);
+            margin-bottom: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .project .tech-stack {
+            font-size: 0.85rem;
+            color: var(--highlight);
+            margin-bottom: 0.5rem;
+        }
+
+        .project p {
+            color: var(--text-muted);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Metrics */
+        .metrics {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .metric {
+            background: rgba(233, 69, 96, 0.1);
+            padding: 1rem;
+            border-radius: 6px;
+            border-left: 3px solid var(--highlight);
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            color: var(--highlight);
+            font-weight: bold;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 0.5rem;
+        }
+
+        /* Image showcase */
+        .browser-frame {
+            background: #0d1220;
+            border: 1px solid rgba(233, 69, 96, 0.25);
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1.5rem 0 0.5rem;
+        }
+
+        .browser-frame .bar {
+            background: #1a2338;
+            padding: 8px 12px;
+            display: flex;
+            gap: 6px;
+        }
+
+        .browser-frame .bar span {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: #3a4a6b;
+            display: inline-block;
+        }
+
+        .browser-frame .bar span:first-child { background: #e94560; }
+
+        .browser-frame img,
+        .browser-frame svg,
+        .browser-frame object {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        .img-caption {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        .img-pair {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .img-pair { grid-template-columns: 1fr; }
+        }
+
+        .callouts {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 0.5rem 0 1.5rem;
+        }
+
+        .callouts span {
+            font-size: 0.82rem;
+            color: var(--text-muted);
+        }
+
+        .callouts b {
+            color: var(--highlight);
+            font-weight: 700;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--text-muted);
+            border-top: 1px solid rgba(233, 69, 96, 0.2);
+            margin-top: 4rem;
+        }
+
+        footer p {
+            margin: 0.5rem 0;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            nav ul {
+                gap: 1rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+
+            section {
+                padding: 1.5rem;
+            }
+
+            .metrics {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Animation */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        section {
+            animation: fadeIn 0.6s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#case-studies">Case Studies</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#projects">Projects</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+
+    <!-- Header -->
+    <header>
+        <h1>Mala Priyadharsini T</h1>
+        <p>Project Manager L2 & Business Analyst</p>
+        <p class="tagline">Building enterprise products. Leading cross-functional teams. Delivering impact.</p>
+    </header>
+
+    <main>
+        <!-- About Section -->
+        <section id="about">
+            <h2>About</h2>
+            <div class="about-content">
+                <div>
+                    <h3>Professional Summary</h3>
+                    <p>PM L2 at ClaySys Technologies, promoted within 6 months. Expertise in business analysis, requirements engineering, product strategy, and stakeholder alignment. I lead product discovery, author requirements documentation, coordinate UAT at enterprise scale, and drive cross-functional teams through complex Agile and Waterfall delivery cycles.</p>
+                    <p>My background combines technical product thinking with financial domain knowledge (NISM certifications) and strategic business acumen (MBA Finance & Marketing). I'm passionate about solving complex business problems with data-driven decision making and operational rigor.</p>
+                </div>
+                <div>
+                    <h3>Key Highlights</h3>
+                    <ul>
+                        <li><strong>Promoted to PM L2</strong> within 6 months at ClaySys</li>
+                        <li><strong>15+ enterprise BRDs</strong> across 2 SaaS products</li>
+                        <li><strong>50+ features coordinated</strong> through UAT and release</li>
+                        <li><strong>Zero scope deviation</strong> — eliminated requirement gaps through rigorous elicitation</li>
+                        <li><strong>70+ sprint tasks</strong> managed end-to-end on Azure DevOps</li>
+                        <li><strong>Financial domain expertise</strong> — NISM certifications (Mutual Fund Distributor, Securities Foundation)</li>
+                        <li><strong>MBA Finance & Marketing</strong> from Bharathiar University (78.77%)</li>
+                        <li><strong>IIT Roorkee BA/PM certification</strong> — industry-aligned training</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Case Studies Section -->
+        <section id="case-studies">
+            <h2>Case Studies</h2>
+
+            <div class="case-study">
+                <h3>Zero-Defect UAT: From Chaos to Process Excellence</h3>
+                <p class="role">Role: Business Analyst & UAT Lead | Project: BPO Suite (Enterprise Workflow Automation)</p>
+                <p><strong>The Problem:</strong> First UAT cycle for BPO Suite resulted in excessive user-logged defects, stakeholder frustration, and delayed go-live. Root cause: loose acceptance criteria, inadequate requirements traceability, and insufficient upstream validation.</p>
+                <p><strong>What I Did:</strong></p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li>Tightened acceptance criteria in BRDs before development, eliminating ambiguity</li>
+                    <li>Implemented upstream requirements validation with business stakeholders before dev sign-off</li>
+                    <li>Created detailed test scenarios mapped 1:1 to requirements</li>
+                    <li>Led daily UAT coordination with operations, QA, and dev teams</li>
+                    <li>Owned defect tracking, triage, and sign-off workflow</li>
+                </ul>
+                <p><strong>The Result:</strong> Second UAT cycle achieved <strong>100% defect reduction</strong> (zero user-logged bugs). Process rigor increased. Stakeholder confidence rebuilt. Go-live completed on schedule.</p>
+                <p><strong>Key Takeaway:</strong> Defect prevention upstream through rigorous BA discipline is infinitely more efficient than defect management downstream.</p>
+            </div>
+
+            <div class="case-study">
+                <h3>NextGen Auth: Enterprise SaaS Authentication at Scale</h3>
+                <p class="role">Role: Product Manager & Requirements Owner | Project: NextGen Auth (External-Facing SaaS)</p>
+                <p><strong>The Challenge:</strong> Owned end-to-end delivery of a subscription-based SaaS authentication platform serving multiple external customers. Required meticulous requirements engineering, wireframe alignment, and UAT coordination across 50+ features.</p>
+                <p><strong>What I Did:</strong></p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li>Authored 8+ BRDs and FRDs translating customer needs into precise dev specs</li>
+                    <li>Led 50+ UI/UX wireframe reviews with design, dev, and product teams</li>
+                    <li>Coordinated UAT for 50+ features with detailed test scenarios and acceptance criteria</li>
+                    <li>Owned defect tracking, root cause analysis, and customer sign-off</li>
+                    <li>Authored product and user manuals for external customer delivery</li>
+                    <li>Managed 30+ change requests, balancing scope, schedule, and quality</li>
+                </ul>
+                <p><strong>The Result:</strong> Zero critical requirement misses. 100% customer sign-off. On-time delivery of external SaaS product.</p>
+                <p><strong>Key Takeaway:</strong> Rigorous traceability between customer needs, requirements, design, dev specs, and UAT is the foundation of enterprise product quality.</p>
+            </div>
+
+            <div class="case-study">
+                <h3>Credit Portfolio Analytics: Data-Driven Insights at Scale</h3>
+                <p class="role">Role: Business Analyst & Analytics Owner | Project: Consumer Credit Analysis Dashboard</p>
+                <p><strong>The Brief:</strong> Build a Power BI dashboard analyzing 10,000+ customer credit records to enable portfolio-level decision making, risk assessment, and operational insights.</p>
+                <p><strong>What I Built:</strong></p>
+                <ul style="margin-left: 1.5rem; margin-bottom: 1rem;">
+                    <li>Designed KPI cards for approved loans, credit scores, and portfolio composition</li>
+                    <li>Visualized loan distributions by type, customer demographics, and approval status</li>
+                    <li>Implemented Row-Level Security (RLS) for secure role-based access</li>
+                    <li>Configured automated scheduled refresh in Power BI Service</li>
+                    <li>Developed DAX formulas for complex aggregations and trend analysis</li>
+                </ul>
+                <p><strong>The Impact:</strong> Leadership gained real-time visibility into 10,000+ customer portfolios. Risk patterns surfaced. Portfolio optimization decisions enabled.</p>
+                <p><strong>Key Takeaway:</strong> Data storytelling + RLS + automation = operational intelligence at enterprise scale.</p>
+
+                <div class="browser-frame">
+                    <div class="bar"><span></span><span></span><span></span></div>
+                    <img src="images/dashboard-overview.png" alt="Consumer credit analysis dashboard: KPI cards and approval mix" loading="lazy">
+                </div>
+                <p class="img-caption">Executive overview — a 10,000-customer credit portfolio distilled into three KPIs, loan-type mix, and an 80/20 approval-rejection split that surfaced risk concentration.</p>
+
+                <div class="browser-frame">
+                    <div class="bar"><span></span><span></span><span></span></div>
+                    <img src="images/dashboard-behavior.png" alt="Payment behavior analysis: default rates by loan type" loading="lazy">
+                </div>
+                <p class="img-caption">Behavioral segmentation — a 5% default rate isolated by loan type using conditional formatting; defaults cluster evenly across products, pointing to pricing rather than product mix. Built on a 10,000-row modeled dataset with DAX measures and Row-Level Security.</p>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2>Skills & Expertise</h2>
+            <div class="skills-grid">
+                <div class="skill-category">
+                    <h3>Product Management</h3>
+                    <ul>
+                        <li>Product Vision & Strategy</li>
+                        <li>Product Roadmapping</li>
+                        <li>Feature Prioritization (RICE)</li>
+                        <li>Product Discovery</li>
+                        <li>Customer Research</li>
+                        <li>Competitive Analysis</li>
+                        <li>Success Metrics & KPIs</li>
+                        <li>Change Request Management</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Business Analysis</h3>
+                    <ul>
+                        <li>Requirement Elicitation</li>
+                        <li>BRD/FRD/PRD Documentation</li>
+                        <li>Use Cases & User Stories</li>
+                        <li>Stakeholder Analysis</li>
+                        <li>Gap Analysis</li>
+                        <li>Business Rules Definition</li>
+                        <li>Acceptance Criteria</li>
+                        <li>Non-Functional Requirements</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Project Management</h3>
+                    <ul>
+                        <li>Agile/Scrum Delivery</li>
+                        <li>Sprint Planning & Execution</li>
+                        <li>UAT Coordination</li>
+                        <li>Defect Management</li>
+                        <li>Stakeholder Management</li>
+                        <li>Release Planning</li>
+                        <li>Azure DevOps</li>
+                        <li>JIRA</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Technical & Data</h3>
+                    <ul>
+                        <li>SQL (MS SQL Server)</li>
+                        <li>Power BI (DAX, RLS, Refresh)</li>
+                        <li>Data Visualization</li>
+                        <li>Excel (Advanced)</li>
+                        <li>Process Flow Diagrams</li>
+                        <li>System Architecture</li>
+                        <li>API Understanding</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Emerging Tech & AI</h3>
+                    <ul>
+                        <li>LLMs & Prompt Engineering</li>
+                        <li>RAG (Retrieval Augmented Generation)</li>
+                        <li>AI Trade-offs (Latency, Cost, Accuracy)</li>
+                        <li>AI-Powered Products</li>
+                        <li>Workflow Automation</li>
+                    </ul>
+                </div>
+
+                <div class="skill-category">
+                    <h3>Certifications & Domain</h3>
+                    <ul>
+                        <li>IIT Roorkee BA/PM Certification</li>
+                        <li>NISM Mutual Fund Distributor</li>
+                        <li>NISM Securities Foundation</li>
+                        <li>Microsoft SQL Certification</li>
+                        <li>Power BI Certification</li>
+                        <li>MBA Finance & Marketing</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2>Key Projects</h2>
+
+            <div class="project">
+                <h3>BPO Suite – Enterprise Workflow Automation Platform</h3>
+                <p class="tech-stack">Tech: Agile/Waterfall | Scope: Enterprise BPO Operations</p>
+                <p><strong>What it is:</strong> Internal enterprise workflow automation platform for ClaySys BPO operations, automating manual process workflows across multiple business units.</p>
+                <p><strong>My Role:</strong> End-to-end product ownership — requirements, UAT coordination, stakeholder management, defect tracking, release planning.</p>
+                <p><strong>Key Achievement:</strong> Delivered zero-defect second UAT cycle through rigorous upstream requirements validation and acceptance criteria tightening.</p>
+            </div>
+
+            <div class="project">
+                <h3>NextGen Auth – Subscription SaaS Authentication Platform</h3>
+                <p class="tech-stack">Tech: Agile/Scrum | Scope: External-facing SaaS product</p>
+                <p><strong>What it is:</strong> Subscription-based SaaS authentication platform for external customers, supporting 50+ features across multiple authentication scenarios.</p>
+                <p><strong>My Role:</strong> Product Manager — BRD/FRD authoring, wireframe reviews, UAT coordination, customer sign-off, user manual authorship.</p>
+                <p><strong>Key Metrics:</strong> 50+ features delivered | 100% customer sign-off | Zero critical requirement misses</p>
+            </div>
+
+            <div class="project">
+                <h3>Consumer Credit Analysis Dashboard</h3>
+                <p class="tech-stack">Tech: Power BI | Dataset: 10,000+ customer records</p>
+                <p><strong>What it is:</strong> Executive-ready analytics dashboard analyzing credit portfolio composition, approvals, risk metrics, and demographic distributions.</p>
+                <p><strong>My Role:</strong> Analytics owner — data modeling, visualization design, RLS implementation, DAX formula development.</p>
+                <p><strong>Impact:</strong> Real-time portfolio visibility | Risk pattern detection | Data-driven decision making</p>
+            </div>
+
+            <!-- VoteFlow: Strategic Centerpiece Case Study -->
+            <div class="case-study" style="border-left: 4px solid #7ee2a8; background: rgba(18, 48, 31, 0.5);">
+                <h3 style="color: #7ee2a8;">VoteFlow: Voter Mobility & Queue Management System</h3>
+                <p class="role" style="color: #7ee2a8; font-weight: 600;">Strategic Product Case Study | Role: Product Architect & Strategy Owner</p>
+
+                <h4 style="color: var(--highlight); margin-top: 1.5rem; margin-bottom: 0.75rem; font-weight: 600;">The Problem: Geographic Voter Suppression (Evidenced in April 2026)</h4>
+                <p>Tamil Nadu has <strong>57.3 million registered voters</strong>. However, voting is restricted to assigned booths based on registered address — not current location. This creates severe hardship for working-age voters who migrate to cities for employment.</p>
+
+                <p style="background: rgba(233, 69, 96, 0.15); padding: 1rem; border-radius: 6px; margin: 1rem 0; color: #eaeaea;"><strong>Election-Eve Crisis (April 23, 2026):</strong></p>
+                <p style="margin: 0.75rem 0; color: var(--text-muted);"><strong>Scale:</strong> Tamil Nadu elections, single-phase polling across 234 assembly constituencies, 75,000+ polling stations</p>
+
+                <ul style="margin: 1rem 0 1rem 1.5rem; color: var(--text-muted); line-height: 1.8;">
+                    <li><strong>189,000+ workers</strong> attempted to travel from Chennai alone to reach native district booths on April 22-23</li>
+                    <li><strong>2,000+ additional buses</strong> deployed by State Transport, yet services "fell short of demand" according to media reports</li>
+                    <li><strong>Gridlock crisis:</strong> 35 km journeys took <strong>over 5 hours</strong>; many travelers spent entire night on buses</li>
+                    <li><strong>Chaos at transport hubs:</strong> Kilambakkam, Koyambedu (Chennai) and Singanallur (Coimbatore) saw overcrowded buses, inflated fares, road blockades, and passenger protests</li>
+                    <li><strong>Voters missed deadline:</strong> "Many struggled to reach their hometowns in time to cast their votes" (direct quote from coverage)</li>
+                    <li><strong>Official concern:</strong> A formal representation was submitted to the Election Commission describing the transport breakdown as a <strong>"serious threat to voters' rights,"</strong> requesting emergency public transport deployment and extended polling hours</li>
+                </ul>
+
+                <p style="margin-top: 1rem; background: rgba(233, 69, 96, 0.15); padding: 1rem; border-radius: 6px; color: #eaeaea;"><strong>Root Cause (From Media Report):</strong> "The scale of voter movement, particularly from cities like Chennai and Coimbatore, appeared to have <strong>outpaced planning</strong>." The system designed for geographically-locked voting cannot handle modern labor migration within Tamil Nadu.</p>
+
+                <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.95rem;"><strong>The honest framing:</strong> The 2026 election actually recorded a record 84.69% turnout — yet the transport system still buckled. That is precisely the point: the current system only works by forcing lakhs of workers into an overnight logistics ordeal. The ~15% who didn't vote include those the ordeal defeated, and even those who succeeded paid a heavy cost in time, money, and lost wages that a vote-anywhere system would eliminate.</p>
+
+                <p style="margin-top: 1rem; color: #8a93a8; font-size: 0.85rem;"><em>Source: News coverage of the April 23, 2026 Tamil Nadu Assembly Elections; formal representations to the Election Commission of India; ECI turnout data (84.69%, 75,064 polling stations, 57.3M electors)</em></p>
+
+                <h4 style="color: var(--highlight); margin-top: 1.5rem; margin-bottom: 0.75rem; font-weight: 600;">The Solution: Vote Anywhere in Tamil Nadu + Smart Queue Management</h4>
+                <p><strong>Proposal:</strong> Allow any Tamil Nadu voter to cast their vote at ANY polling booth in the state (not just their assigned booth).</p>
+                <p><strong>But this creates a NEW challenge:</strong> Without management, voters would naturally flock to convenient booths (city centers, near celebrity constituencies), creating chaos and long queues while others remain empty.</p>
+                <p><strong>VoteFlow solves both problems with six integrated phases:</strong></p>
+                <ol style="margin: 1rem 0 1rem 1.5rem; color: var(--text-muted); line-height: 1.8;">
+                    <li><strong>Phase 1:</strong> Centralized Digital Voter Registry (75,064 booths, 57.3M voters) — enables instant voter verification anywhere in TN</li>
+                    <li><strong>Phase 2:</strong> Booth Officer Verification App — fast voter check in <2 min (supports vote-anywhere system)</li>
+                    <li><strong>Phase 3:</strong> Live Booth Capacity Dashboard — real-time queue length at every booth for ECI command center</li>
+                    <li><strong>Phase 4:</strong> Queue Prediction Engine — forecasts crowding at each booth 30 min in advance</li>
+                    <li><strong>Phase 5:</strong> Automated Crowd Alerts — alerts police/crowd management when booths approach capacity</li>
+                    <li><strong>Phase 6:</strong> AI Voter Guidance Assistant — bilingual chat (Tamil/English) directs voters to nearest booth with SHORTEST queue</li>
+                </ol>
+
+                <div class="img-pair" style="margin: 2rem 0;">
+                    <div>
+                        <div class="browser-frame">
+                            <div class="bar"><span></span><span></span><span></span></div>
+                            <img src="images/voteflow-landing.png" alt="VoteFlow landing page in English with live booth queue status" loading="lazy">
+                        </div>
+                        <p class="img-caption">Live booth status — queue predictions color-coded LOW / MEDIUM / HIGH for instant scanning, with bilingual toggle on first screen.</p>
+                    </div>
+                    <div>
+                        <div class="browser-frame">
+                            <div class="bar"><span></span><span></span><span></span></div>
+                            <img src="images/voteflow-tamil.png" alt="VoteFlow AI assistant working fully in Tamil with suggested prompts" loading="lazy">
+                        </div>
+                        <p class="img-caption">Vernacular-first AI — suggested prompts, queue answers, and guardrails fully functional in Tamil. Not translated; designed bilingual from day one.</p>
+                    </div>
+                </div>
+                <div class="callouts" style="margin: 1rem 0 1.5rem;">
+                    <span><b>①</b> Bilingual-first toggle</span>
+                    <span><b>②</b> Live queue prediction</span>
+                    <span><b>③</b> AI assistant (Tamil & English)</span>
+                </div>
+
+                <div class="browser-frame" style="margin: 1.5rem 0;">
+                    <div class="bar"><span></span><span></span><span></span></div>
+                    <img src="images/voteflow-architecture.svg" alt="VoteFlow six-phase system architecture diagram" loading="lazy">
+                </div>
+                <p class="img-caption">System architecture — one centralized data layer feeding four surfaces (officer app, ECI dashboard, alerts, queue prediction) with Claude-powered AI assistant retrieving live booth data via RAG.</p>
+
+                <h4 style="color: var(--highlight); margin-top: 1.5rem; margin-bottom: 0.75rem; font-weight: 600;">Impact: Democratizing Voter Participation</h4>
+                <div style="background: rgba(15, 52, 96, 0.3); padding: 1.25rem; border-radius: 8px; margin: 1rem 0; border-left: 3px solid #e94560;">
+                    <p style="margin: 0; color: #eaeaea;"><strong>Voter Participation:</strong> Eliminate 300-600 km travel barrier; vote from anywhere in TN</p>
+                    <p style="margin: 0.5rem 0 0; color: var(--text-muted); font-size: 0.9rem;">Expected increase in turnout: 15-20% (recover 8.6-11.5M votes that would otherwise be lost)</p>
+
+                    <p style="margin: 1rem 0 0; color: #eaeaea;"><strong>Voter Experience:</strong> Real-time queue guidance; find shortest booth in your area</p>
+                    <p style="margin: 0.5rem 0 0; color: var(--text-muted); font-size: 0.9rem;">Average wait time reduction: 30-45 min → 5-10 min (vote during lunch break, on commute)</p>
+
+                    <p style="margin: 1rem 0 0; color: #eaeaea;"><strong>Operational Efficiency:</strong> Fast verification (<2 min) + load balancing across 75,064 booths</p>
+                    <p style="margin: 0.5rem 0 0; color: var(--text-muted); font-size: 0.9rem;">No booth overcrowded; all operate efficiently. Operational cost savings: ₹180 Cr per election</p>
+
+                    <p style="margin: 1rem 0 0; color: #eaeaea;"><strong>Democratic Impact:</strong></p>
+                    <ul style="margin: 0.5rem 0 0 1.5rem; color: var(--text-muted); font-size: 0.9rem;">
+                        <li>Removes geographic voter suppression</li>
+                        <li>Increases election legitimacy (higher turnout = stronger mandate)</li>
+                        <li>Equity: Working-class voters (who migrate for work) now have equal access</li>
+                        <li>Turnout increase: 15-20% × 57.3M voters = 8.6-11.5M additional votes</li>
+                    </ul>
+                </div>
+
+                <h4 style="color: var(--highlight); margin-top: 1.5rem; margin-bottom: 0.75rem; font-weight: 600;">Key Product Decisions</h4>
+                <ul style="margin: 1rem 0 1rem 1.5rem; color: var(--text-muted);">
+                    <li><strong>Vote-anywhere policy enablement:</strong> Phase 1 digital registry makes "vote at any TN booth" practically feasible (was impossible with paper-based rolls)</li>
+                    <li><strong>Queue redirection over assignment:</strong> Instead of assigning voters to booths, guide them to shortest queue (empowers voter choice)</li>
+                    <li><strong>Bilingual-first design:</strong> Tamil interface is not translation; ensures 57.3M Tamil-first workers can navigate system independently</li>
+                    <li><strong>Real-time queue bands (LOW/MEDIUM/HIGH):</strong> More scannable than numbers; voters decide instantly which booth to visit</li>
+                    <li><strong>Crowd management integration:</strong> Police/officials can proactively reposition based on queue predictions (prevent bottlenecks before they form)</li>
+                </ul>
+
+                <h4 style="color: var(--highlight); margin-top: 1.5rem; margin-bottom: 0.75rem; font-weight: 600;">Core Capabilities</h4>
+                <p style="margin: 1rem 0; color: var(--text-muted);"><strong>Phase 1: Voter Registry</strong> — 57.3M voters instantly verifiable at any of 75,064 booths (enables vote-anywhere policy)</p>
+                <p style="margin: 1rem 0; color: var(--text-muted);"><strong>Phase 2: Officer Verification</strong> — Fast voter authentication in <2 min per person (critical when handling vote-anywhere volume)</p>
+                <p style="margin: 1rem 0; color: var(--text-muted);"><strong>Phases 3-5: Queue Intelligence</strong> — Real-time + predicted crowd levels at every booth; automated alerts when capacity approached</p>
+                <p style="margin: 1rem 0; color: var(--text-muted);"><strong>Phase 6: AI Voter Guide</strong> — Bilingual chatbot directs voters to nearest booth + shortest queue (solves voter confusion; prevents bottlenecks)</p>
+
+                <h4 style="color: var(--highlight); margin-top: 1.5rem; margin-bottom: 0.75rem; font-weight: 600;">Success Metrics</h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: 1rem 0;">
+                    <div style="background: rgba(233, 69, 96, 0.1); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--highlight); text-align: center;">
+                        <p style="margin: 0; font-size: 1.6rem; color: var(--highlight); font-weight: 700;">15-20%</p>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--text-muted);">Turnout increase (8.6-11.5M additional votes)</p>
+                    </div>
+                    <div style="background: rgba(233, 69, 96, 0.1); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--highlight); text-align: center;">
+                        <p style="margin: 0; font-size: 1.6rem; color: var(--highlight); font-weight: 700;"><2 min</p>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--text-muted);">Voter verification time (vs. 3-5 min manual)</p>
+                    </div>
+                    <div style="background: rgba(233, 69, 96, 0.1); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--highlight); text-align: center;">
+                        <p style="margin: 0; font-size: 1.6rem; color: var(--highlight); font-weight: 700;">5-10 min</p>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--text-muted);">Average wait time (vs. 30-45 min bottleneck)</p>
+                    </div>
+                    <div style="background: rgba(233, 69, 96, 0.1); padding: 1rem; border-radius: 6px; border-left: 3px solid var(--highlight); text-align: center;">
+                        <p style="margin: 0; font-size: 1.6rem; color: var(--highlight); font-weight: 700;">85+ NPS</p>
+                        <p style="margin: 0.5rem 0 0; font-size: 0.85rem; color: var(--text-muted);">Voter satisfaction with system</p>
+                    </div>
+                </div>
+
+                <p style="margin-top: 1.5rem; color: var(--text-muted); font-size: 0.9rem;"><strong>Status:</strong> Google Sheets registry live (57.3M voter records) | AI assistant deployed on Replit | Phases 2-5 architecturally designed | Awaiting ECI policy approval for vote-anywhere implementation</p>
+
+                <p style="margin-top: 1rem; color: var(--text-muted); font-size: 0.9rem;"><strong>Why this matters:</strong> VoteFlow solves a fundamental democratic equity problem through technology. It removes the geographic barrier that suppresses voter participation, enabling 57.3M voters to exercise their democratic right without sacrificing their livelihoods. This demonstrates end-to-end PM thinking: identify equity barrier → propose policy shift → build enabling infrastructure → manage implementation risks.</p>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 style="text-align: center; margin-bottom: 0.5rem;">Let's Work Together</h2>
+            <p style="text-align: center; color: var(--text-muted); margin-bottom: 2.5rem; font-size: 1.05rem;">
+                I'm always open to discuss new opportunities, collaborate on exciting projects, or share ideas about Product, Data & Technology.
+            </p>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin: 2rem 0;">
+                <!-- Email Card -->
+                <div style="background: rgba(233, 69, 96, 0.08); border: 1px solid rgba(233, 69, 96, 0.3); border-radius: 12px; padding: 2rem; text-align: center;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #e94560, #d63450); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem;">
+                        ✉️
+                    </div>
+                    <h3 style="margin: 0 0 0.5rem; color: #eaeaea; font-size: 1.3rem;">Email</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0 0 1rem;">Let's start a conversation</p>
+                    <p style="color: var(--highlight); font-weight: 600; margin: 1rem 0; word-break: break-all;">malapriyat4@gmail.com</p>
+                    <a href="mailto:malapriyat4@gmail.com" style="display: inline-block; margin-top: 1rem; padding: 0.75rem 2rem; border: 1.5px solid var(--highlight); border-radius: 8px; color: var(--highlight); text-decoration: none; font-weight: 600; transition: all 0.3s; cursor: pointer;">
+                        → Send Email
+                    </a>
+                </div>
+
+                <!-- LinkedIn Card -->
+                <div style="background: rgba(30, 144, 255, 0.08); border: 1px solid rgba(30, 144, 255, 0.3); border-radius: 12px; padding: 2rem; text-align: center;">
+                    <div style="width: 80px; height: 80px; margin: 0 auto 1.5rem; background: linear-gradient(135deg, #1e90ff, #0066cc); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.2rem;">
+                        in
+                    </div>
+                    <h3 style="margin: 0 0 0.5rem; color: #eaeaea; font-size: 1.3rem;">LinkedIn</h3>
+                    <p style="color: var(--text-muted); font-size: 0.95rem; margin: 0 0 1rem;">Let's connect professionally</p>
+                    <p style="color: #1e90ff; font-weight: 600; margin: 1rem 0; font-size: 0.9rem;">linkedin.com/in/mala-priyadharsini-37aab21b3</p>
+                    <a href="https://www.linkedin.com/in/mala-priyadharsini-37aab21b3" target="_blank" style="display: inline-block; margin-top: 1rem; padding: 0.75rem 2rem; border: 1.5px solid #1e90ff; border-radius: 8px; color: #1e90ff; text-decoration: none; font-weight: 600; transition: all 0.3s; cursor: pointer;">
+                        → View Profile
+                    </a>
+                </div>
+            </div>
+
+            <!-- Bottom Row -->
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(233, 69, 96, 0.2);">
+                <div style="background: rgba(18, 48, 31, 0.4); border-left: 3px solid #7ee2a8; padding: 1.5rem; border-radius: 6px;">
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0 0 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Based In</p>
+                    <p style="color: #eaeaea; margin: 0; font-weight: 600;">Chennai, Coimbatore & Bengaluru</p>
+                </div>
+                <div style="background: rgba(18, 48, 31, 0.4); border-left: 3px solid #7ee2a8; padding: 1.5rem; border-radius: 6px;">
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0 0 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Availability</p>
+                    <p style="color: #eaeaea; margin: 0; font-weight: 600;">Open to opportunities</p>
+                </div>
+                <div style="background: rgba(18, 48, 31, 0.4); border-left: 3px solid #7ee2a8; padding: 1.5rem; border-radius: 6px;">
+                    <p style="color: var(--text-muted); font-size: 0.85rem; margin: 0 0 0.5rem; text-transform: uppercase; letter-spacing: 1px;">Open For</p>
+                    <p style="color: #eaeaea; margin: 0; font-weight: 600;">Product/Project Management, Business Analysis, Program Management</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Mala Priyadharsini T. Built on GitHub Pages.</p>
+        <p>Project Manager L2 | Business Analyst | Enterprise Product Delivery</p>
+    </footer>
+</body>
+</html>
