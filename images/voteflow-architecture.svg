@@ -1,0 +1,81 @@
+<svg viewBox="0 0 900 560" xmlns="http://www.w3.org/2000/svg" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif">
+  <rect width="900" height="560" rx="12" fill="#131a2f"/>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#e94560"/>
+    </marker>
+  </defs>
+
+  <text x="450" y="42" text-anchor="middle" fill="#eaeaea" font-size="22" font-weight="600">VoteFlow — six-phase system architecture</text>
+  <text x="450" y="66" text-anchor="middle" fill="#8a93a8" font-size="13">One data layer, four surfaces, AI on top</text>
+
+  <!-- Users row -->
+  <g>
+    <rect x="60" y="95" width="240" height="52" rx="8" fill="#1f2a44" stroke="#3a4a6b" stroke-width="1"/>
+    <text x="180" y="117" text-anchor="middle" fill="#eaeaea" font-size="14" font-weight="600">Voters (citizens)</text>
+    <text x="180" y="135" text-anchor="middle" fill="#8a93a8" font-size="11.5">English + Tamil</text>
+
+    <rect x="330" y="95" width="240" height="52" rx="8" fill="#1f2a44" stroke="#3a4a6b" stroke-width="1"/>
+    <text x="450" y="117" text-anchor="middle" fill="#eaeaea" font-size="14" font-weight="600">Booth officers</text>
+    <text x="450" y="135" text-anchor="middle" fill="#8a93a8" font-size="11.5">Field verification</text>
+
+    <rect x="600" y="95" width="240" height="52" rx="8" fill="#1f2a44" stroke="#3a4a6b" stroke-width="1"/>
+    <text x="720" y="117" text-anchor="middle" fill="#eaeaea" font-size="14" font-weight="600">Election officials</text>
+    <text x="720" y="135" text-anchor="middle" fill="#8a93a8" font-size="11.5">Monitoring + escalation</text>
+  </g>
+
+  <!-- Surfaces row -->
+  <g>
+    <rect x="60" y="205" width="240" height="86" rx="8" fill="#25182a" stroke="#e94560" stroke-width="1.5"/>
+    <text x="180" y="232" text-anchor="middle" fill="#e94560" font-size="13" font-weight="700">AI VOTER ASSISTANT</text>
+    <text x="180" y="252" text-anchor="middle" fill="#d6d9e0" font-size="11.5">Node.js / Express + Claude API</text>
+    <text x="180" y="268" text-anchor="middle" fill="#8a93a8" font-size="11">RAG over live booth data</text>
+    <text x="180" y="283" text-anchor="middle" fill="#8a93a8" font-size="11">Bilingual · guardrailed answers</text>
+
+    <rect x="330" y="205" width="240" height="86" rx="8" fill="#182338" stroke="#3a4a6b" stroke-width="1"/>
+    <text x="450" y="232" text-anchor="middle" fill="#eaeaea" font-size="13" font-weight="700">OFFICER APP</text>
+    <text x="450" y="252" text-anchor="middle" fill="#d6d9e0" font-size="11.5">AppSheet</text>
+    <text x="450" y="268" text-anchor="middle" fill="#8a93a8" font-size="11">Verify · flag · geo-locate voters</text>
+    <text x="450" y="283" text-anchor="middle" fill="#8a93a8" font-size="11">Built for low connectivity</text>
+
+    <rect x="600" y="205" width="240" height="86" rx="8" fill="#182338" stroke="#3a4a6b" stroke-width="1"/>
+    <text x="720" y="232" text-anchor="middle" fill="#eaeaea" font-size="13" font-weight="700">ECI DASHBOARD</text>
+    <text x="720" y="252" text-anchor="middle" fill="#d6d9e0" font-size="11.5">Looker Studio</text>
+    <text x="720" y="268" text-anchor="middle" fill="#8a93a8" font-size="11">Turnout · queue heatmap</text>
+    <text x="720" y="283" text-anchor="middle" fill="#8a93a8" font-size="11">Incident tracking</text>
+  </g>
+
+  <!-- Logic row -->
+  <g>
+    <rect x="195" y="345" width="240" height="70" rx="8" fill="#182338" stroke="#3a4a6b" stroke-width="1"/>
+    <text x="315" y="372" text-anchor="middle" fill="#eaeaea" font-size="13" font-weight="700">QUEUE PREDICTION</text>
+    <text x="315" y="391" text-anchor="middle" fill="#8a93a8" font-size="11">Wait-time logic per booth</text>
+    <text x="315" y="406" text-anchor="middle" fill="#8a93a8" font-size="11">LOW / MEDIUM / HIGH bands</text>
+
+    <rect x="465" y="345" width="240" height="70" rx="8" fill="#182338" stroke="#3a4a6b" stroke-width="1"/>
+    <text x="585" y="372" text-anchor="middle" fill="#eaeaea" font-size="13" font-weight="700">EMAIL AUTOMATION</text>
+    <text x="585" y="391" text-anchor="middle" fill="#8a93a8" font-size="11">Make.com scenarios</text>
+    <text x="585" y="406" text-anchor="middle" fill="#8a93a8" font-size="11">Incident alerts to officials</text>
+  </g>
+
+  <!-- Data layer -->
+  <g>
+    <rect x="195" y="465" width="510" height="66" rx="8" fill="#12301f" stroke="#2e7d4f" stroke-width="1.5"/>
+    <text x="450" y="492" text-anchor="middle" fill="#7ee2a8" font-size="13" font-weight="700">CENTRAL DATA LAYER — Google Sheets</text>
+    <text x="450" y="512" text-anchor="middle" fill="#9db8a8" font-size="11.5">Voter records · booth registry · incident log (synthetic data modeled on real TN election scale)</text>
+  </g>
+
+  <!-- Arrows: users to surfaces -->
+  <line x1="180" y1="147" x2="180" y2="200" stroke="#e94560" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="450" y1="147" x2="450" y2="200" stroke="#5a6a8d" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="720" y1="147" x2="720" y2="200" stroke="#5a6a8d" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Arrows: surfaces to logic / data -->
+  <line x1="180" y1="291" x2="290" y2="342" stroke="#5a6a8d" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="450" y1="291" x2="450" y2="462" stroke="#5a6a8d" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="720" y1="291" x2="620" y2="342" stroke="#5a6a8d" stroke-width="1.5" marker-end="url(#arrow)"/>
+
+  <!-- Arrows: logic to data -->
+  <line x1="315" y1="415" x2="345" y2="462" stroke="#5a6a8d" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <line x1="585" y1="415" x2="555" y2="462" stroke="#5a6a8d" stroke-width="1.5" marker-end="url(#arrow)"/>
+</svg>
